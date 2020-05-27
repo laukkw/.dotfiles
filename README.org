@@ -1,0 +1,125 @@
+#+OPTIONS: reveal_title_slide:"<h2>%t</h2><h3>%a</h3>"
+#+OPTIONS: toc:nil num:nil todo:nil pri:nil tags:nil ^:nil
+#+CATEGORY: 
+#+TAGS: 
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/
+#+REVEAL_THEME: moon
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./style.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/rzry/rzry.github.io/blog/css/style.css"/>
+#+HTML_HEAD:<audio autoplay="autoplay" controls="controls"loop="loop" preload="auto" src="http://m10.music.126.net/20190829155334/b23c7c64098ba21508f0da1244872412/ymusic/270c/ee02/cd79/25ef23f2b5f9f60d5f8da59cbbf099a9.mp3">你的浏览器不支持audio标签</audio>
+#+TITLE: 配置
+#+AUTHOR: rzry
+#+DATE: 
+#+LATEX_COMPILER: xelatex
+* Install 
+  #+BEGIN_SRC 
+  ** 配置代理进行如下操作
+  1 . git clone https://github.com/rzry/.dotfiles.git ~/.dotfiles
+  2 . cd ~/.dotfiles && ./init.sh all
+  3 . stow zsh 
+  4 . stow tmux
+  5 . tmux
+  6 . M-f I (M-f 是我配置 tmux的功能键)
+  #+END_SRC
+
+* Introduction
+  #+BEGIN_SRC 
+  1 . tmux config 存在于.dotfiles--->>tmux-->>.config--->>tmux
+  2 . 可自行修改目录下文件内容-->会使用ln方式作为linux配置
+  #+END_SRC
+  <#+caption: tmux常用快捷键--emacs快捷键通用
+  | <名称>              | <释义>               |
+  | M-f                 | 功能键               |
+  | M-f-s               | 查看所有window       |
+  | M-f-d               | 关闭此tmux但不退出   |
+  | M-d                 | 关闭并关闭此窗口     |
+  | M-f-1               | 切换到1窗口          |
+  | M-f-c               | 在此tmux栏创建新窗口 |
+  | M-f-r               | 重载                 |
+  | M-f-I               | install              |
+  | P10k configre       | 设置theme            |
+  | M-f-分隔符(shift-\) | 竖向分割窗口         |
+  | M-f-分隔符(shift-)  | 横向分割窗口         |
+  | M-f-[               | 进入选中             |
+  | M-f-m               | 鼠标模式             |
+  |                     |                      |
+  |---------------------+----------------------|
+* Unintall 
+  #+BEGIN_SRC 
+  stow -D zsh 
+  #+END_SRC
+
+* Use Emacs-config
+  #+BEGIN_SRC 
+  ** 配置代理进以下操作 use package 未使用镜像源
+  1 . git clone https://github.com/rzry/emacs-custom.git ~/.emacs.d
+  2 . emacs 
+  #+END_SRC
+  <#+caption: emacs/linux/tmux通用快捷键
+  | <名称>          | <类型> | <释义>       |
+  | C-a             | 通用   | 跳转到行首   |
+  | C-e             | 通用   | 跳转到行位   |
+  | C-空格-上下左右 | 通用   | 选中         |
+  | C-s             | 通用   | 搜索         |
+  | C-v             | 通用   | 快速向下翻页 |
+  | M-v             | 通用   | 快速向上翻页 |
+  |-----------------+--------+--------------|
+  <#+caption: emasc所有模式通用快捷键
+  | <名称>     | <释义>                    |
+  | C-x C-f    | 打开文件buffer            |
+  | C-n        | 下                        |
+  | C-p        | 上                        |
+  | C-f        | 前                        |
+  | C-b        | 后                        |
+  | C-x C-u    | 改变选取字母为大写        |
+  | M-g        | 跳转到行                  |
+  | C-g        | quit,不知道按什么就按这个 |
+  | C-x-b      | 查看所有buffer            |
+  | C-x 3      | 竖着分割                  |
+  | C-x 0      | 关闭光标所在的buffer      |
+  | C-x 左右   | 切换buffer                |
+  | C-k        | kill一行,存在剪贴板       |
+  | C-y        | 粘贴                      |
+  | M-w        | 复制                      |
+  | C-w        | 剪贴                      |
+  | 想起了再补 |                           |
+  |            |                           |
+  |------------+---------------------------|
+  
+  <#+caption: 单模式通用快捷键
+  | <名称>           | <释义>                                      |
+  | C-c @ C-h        | 代码块折叠                                  |
+  | C-c @ C-s        | 代码块展开                                  |
+  | multiple-cursors | 此插件太过强大...不介绍                     |
+  |                  | 做匹配选中的(我只配置了简单的)              |
+  | M-c              | 向下做选中的匹配                            |
+  | M-m              | 向上做选中的匹配                            |
+  | C-c-p-p          | 配置  跳转buffer中的以git(不止)为基准的项目 |
+  | M-x-ag           | 搜索类似于 grep ri                          |
+  |                  | apt install silversearcher-ag               |
+  |                  |                                             |
+  |------------------+---------------------------------------------|
+
+  <#+caption: 单模式快捷键
+  | <名称>            | <类型>    | <释义>                     |
+  | M-x yas des table | yasnippet | 查看当前模式代码块         |
+  | M-x new snippets  | yasnippet | 新增代码块                 |
+  | C-c ! l           | flycheck  | 查看代码错误               |
+  | C-c ! v           | flycheck  | 查看当前模式使用的flycheck |
+  |                   |           |                            |
+  |-------------------+-----------+----------------------------|
+  <#+caption: 文件操作
+  | <名称> | <类型> | <释义>             |
+  | \ ^ \  | dired  | 返回上层           |
+  | m      | dired  | mark               |
+  | d      | dired  | mark delete        |
+  | C      | dired  | copy(mark的文件)   |
+  | D      | dired  | delete(mark的文件) |
+  | i      | dired  | 在下方展开目录     |
+  | `$`    | dired  | 折叠目录           |
+  | R      | dired  | 重命名             |
+  |        |        | have lot of fun    |
+  |        |        |                    |
+  |--------+--------+--------------------|
+[[link][description]]  https://github.com/imzhongqi/dotfiles
