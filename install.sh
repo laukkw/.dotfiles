@@ -27,7 +27,7 @@ install-docker() {
 
 install-golang() {
   echo "install golang"
-  version=${1:-1.14.3}
+  version=${1:-1.15}
   name="go${version}.${platform}-amd64.tar.gz"
   curl -L https://dl.google.com/go/$name -o /tmp/$name
   sudo tar xzf /tmp/$name -C /usr/local && rm /tmp/$name
@@ -101,6 +101,20 @@ install-exa() {
   unzip -q /tmp/$name -d /tmp && sudo mv /tmp/${name%-$version*} /usr/local/bin/exa
 }
 
+install-ssr(){
+    echo "install ssr"
+    version=${1:-v0.2.7}
+    curl -L https://github.com/shadowsocksrr/electron-ssr/releases/download/${version}/electron-ssr-0.2.7.deb
+    sudo dpkg -i electron-ssr-0.2.7.deb
+    rm -rf electron-ssr-0.2.7.deb
+}
+
+install-emacs(){
+    echo "install emacs"
+    sudo apt update 
+    sudo apt -y  install snap
+    sudo snap -y install emacs-28 --beta
+}
 main() {
   name=$1
   shift
@@ -147,6 +161,12 @@ main() {
     ;;
     clang-format)
       install-clang-format $@
+    ;;
+    electron-ssr)
+        install-ssr $@
+    ;;
+    emacs)
+        install-emacs $@
     ;;
     *)
       echo "usage: $0 (docker|docker-compose|golang|nodejs|rust|protoc)"

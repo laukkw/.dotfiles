@@ -4,3 +4,6 @@
 [submodule "tmux/.local/share/tmux/plugins/tpm"]
 	path = tmux/.local/share/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "emacs"]
+	path = emacs
+	url = https://github.com/rzry/emacs-custom
