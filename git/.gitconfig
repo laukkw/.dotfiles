@@ -1,3 +1,15 @@
-[user]
+ [user]
 	email = rzry36008@gmail.com
 	name = rzry
+[core]
+        editor = /usr/bin/vim
+        editor = /usr/bin/vim
+        editor = /usr/bin/vim
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
