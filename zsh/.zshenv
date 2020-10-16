@@ -6,14 +6,15 @@ ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 skip_global_compinit=1
 
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/.local/go"
+export GO111MODULE="on"
 
 () {
   local USER_PATH=(
     /usr/local/go/bin
     $HOME/.local/bin
     $HOME/.cargo/bin
-    $HOME/.local/share/node/bin
+    /usr/local/bin/node
     $HOME/.yarn/bin
     $GOPATH/bin
   )
@@ -24,4 +25,9 @@ export GOPATH="$HOME/go"
     export PATH="$USER_PATH:$PATH"
   fi
 }
+# 代理设置
+url=http://127.0.0.1:10080
+alias poff='unset http_proxy;unset https_proxy'
+# 快捷方式打开
+alias pon='export http_proxy=$url; export https_proxy=$url'
 
