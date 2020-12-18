@@ -25,9 +25,11 @@ export GO111MODULE="on"
     export PATH="$USER_PATH:$PATH"
   fi
 }
-# 代理设置
+# proxy
 url=http://127.0.0.1:10080
 alias poff='unset http_proxy;unset https_proxy'
-# 快捷方式打开
 alias pon='export http_proxy=$url; export https_proxy=$url'
 
+#kill editor
+alias vim='emacsclient' vi='emacsclient'
+alias nano='emacsclient'

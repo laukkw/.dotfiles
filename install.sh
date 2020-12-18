@@ -16,7 +16,7 @@ install-docker-compose() {
 
 install-docker() {
   echo "install docker"
-  sudo apt-get update && 
+  sudo apt-get update &&
   sudo apt-get -y install curl apt-transport-https ca-certificates software-properties-common &&
   (curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -) &&
   sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" &&
@@ -27,7 +27,7 @@ install-docker() {
 
 install-golang() {
   echo "install golang"
-  version=${1:-1.15}
+  version=${1:-1.14.5}
   name="go${version}.${platform}-amd64.tar.gz"
   curl -L https://dl.google.com/go/$name -o /tmp/$name
   sudo tar xzf /tmp/$name -C /usr/local && rm /tmp/$name
@@ -37,7 +37,7 @@ install-node() {
   echo "install node"
   version=${1:-12.16.3}
   name=node-v${version}-${platform}-x64.tar.gz
-  install_dir=$HOME/.local/share/node 
+  install_dir=$HOME/.local/share/node
   curl -L https://nodejs.org/dist/v${version}/${name} -o /tmp/$name
   mkdir -p $install_dir && tar xzf /tmp/$name -C $install_dir --strip-components 1 && rm /tmp/$name
 }
@@ -111,7 +111,7 @@ install-ssr(){
 
 install-emacs(){
     echo "install emacs"
-    sudo apt update 
+    sudo apt update
     sudo apt -y  install snap
     sudo snap -y install emacs-28 --beta
 }
